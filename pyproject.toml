@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mlops-fmnist"
+version = "0.1.0"
+description = "Piccolo progetto MLOps: CNN su Fashion-MNIST"
+authors = [{ name = "Tuo Nome" }]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "torch>=2.2",
+  "torchvision>=0.17",
+  "numpy",
+  "matplotlib",
+  "tqdm",
+]
+
+[project.urls]
+Homepage = "https://github.com/MasteredChris/mlops_fashion_mnist"

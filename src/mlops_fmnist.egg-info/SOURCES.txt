@@ -1,0 +1,14 @@
+README.md
+pyproject.toml
+src/mlops_fmnist/data.py
+src/mlops_fmnist/evaluate.py
+src/mlops_fmnist/model.py
+src/mlops_fmnist/train.py
+src/mlops_fmnist/utils.py
+src/mlops_fmnist.egg-info/PKG-INFO
+src/mlops_fmnist.egg-info/SOURCES.txt
+src/mlops_fmnist.egg-info/dependency_links.txt
+src/mlops_fmnist.egg-info/requires.txt
+src/mlops_fmnist.egg-info/top_level.txt
+tests/test_data.py
+tests/test_model.py
