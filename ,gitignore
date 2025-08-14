@@ -7,3 +7,6 @@ build/
 outputs/
 data/
 .cache/
+*.pth 
+*.pt 
+*.whl 
