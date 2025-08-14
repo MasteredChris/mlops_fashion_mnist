@@ -53,10 +53,10 @@ build:
 	$(ACTIVATE) && python -m build
 
 docker-build:
-	docker build -t $(PACKAGE) .
+	sudo docker build -t $(PACKAGE) .
 
 docker-run:
-	docker run --rm -v $(PWD)/$(OUTPUT_DIR):/app/outputs -v $(PWD)/$(DATA_DIR):/app/data $(PACKAGE)
+	sudo docker run --rm -v $(PWD)/$(OUTPUT_DIR):/app/outputs -v $(PWD)/$(DATA_DIR):/app/data $(PACKAGE)
 
 clean:
 	rm -rf $(VENV) dist build *.egg-info __pycache__ */__pycache__ $(OUTPUT_DIR) $(DATA_DIR) .pytest_cache
