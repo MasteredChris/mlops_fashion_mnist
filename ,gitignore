@@ -1,12 +1,21 @@
-__pycache__/
-*.pyc
-.venv/
-dist/
-build/
-*.egg-info/
-outputs/
+# Dataset e output
+
 data/
+outputs/
+_.pth
+_.pt
+\*.whl
+
+# Ambiente virtuale
+
+.venv/
+
+# Cache e temporanei
+
+**pycache**/
+_.pyc
+_.pyo
+\*.egg-info/
+build/
+dist/
 .cache/
-*.pth 
-*.pt 
-*.whl 
