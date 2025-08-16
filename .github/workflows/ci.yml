@@ -44,7 +44,7 @@ jobs:
           python -m src.mlops_fmnist.train --epochs 1 --output_dir outputs
 
       - name: Upload training artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: training-results
           path: outputs/
@@ -55,6 +55,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
       - name: Build Docker image
         run: docker build -t mlops-fmnist:ci .
