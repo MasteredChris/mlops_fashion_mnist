@@ -1,14 +1,14 @@
 from __future__ import annotations
 import argparse
 import torch
-from .data import get_dataloaders
+from .data import get_data_loaders
 from .model import SmallCNN
 from .utils import get_device
 
 
 def main(args):
     device = get_device(args.cpu)
-    _, test_dl = get_dataloaders(args.data_dir, args.batch_size, args.num_workers)
+    _, test_dl = get_data_loaders(args.data_dir, args.batch_size, args.num_workers)
     model = SmallCNN().to(device)
     state = torch.load(args.checkpoint, map_location=device)
     model.load_state_dict(state)
@@ -25,7 +25,7 @@ def main(args):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--checkpoint", type=str, default="./outputs/model.pth")
+    ap.add_argument("--checkpoint", type=str, default="./outputs/final_tensor.pt")
     ap.add_argument("--data_dir", type=str, default="./data")
     ap.add_argument("--batch_size", type=int, default=64)
     ap.add_argument("--num_workers", type=int, default=2)

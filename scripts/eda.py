@@ -1,5 +1,6 @@
 import random
 import torch
+import os
 import matplotlib.pyplot as plt
 from collections import Counter
 from torchvision import datasets, transforms
@@ -23,4 +24,7 @@ for ax in axs.ravel():
     ax.imshow(img.squeeze(), cmap="gray")
     ax.set_title(str(lab)); ax.axis("off")
 plt.tight_layout()
-plt.show()
+os.makedirs("outputs", exist_ok=True)
+plt.savefig("outputs/eda_classes.png")
+plt.close()
+

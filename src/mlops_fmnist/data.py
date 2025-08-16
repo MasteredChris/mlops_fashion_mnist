@@ -12,7 +12,7 @@ def get_transforms():
     )
 
 
-def get_dataloaders(
+def get_data_loaders(
     data_dir: str = "./data", batch_size: int = 64, num_workers: int = 2
 ):
     tfm = get_transforms()

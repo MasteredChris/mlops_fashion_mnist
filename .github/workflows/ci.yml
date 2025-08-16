@@ -38,6 +38,17 @@ jobs:
           name: dist-wheel
           path: dist/*.whl
 
+      - name: Run training (1 epoch quick test)
+        run: |
+          mkdir -p outputs
+          python -m src.mlops_fmnist.train --epochs 1 --output_dir outputs
+
+      - name: Upload training artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: training-results
+          path: outputs/
+
   docker-build:
     runs-on: ubuntu-latest
     needs: build-test

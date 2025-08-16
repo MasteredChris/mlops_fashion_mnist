@@ -39,9 +39,9 @@ eda:
 
 train:
 	$(ACTIVATE) && $(PYTHON) -m src.mlops_fmnist.train --epochs 5 --output_dir $(OUTPUT_DIR)
-
+	@echo "In outputs/ si genereranno i file final_tensor.pt, metrics.json e train.log"
 eval:
-	$(ACTIVATE) && $(PYTHON) -m src.mlops_fmnist.evaluate --checkpoint $(OUTPUT_DIR)/model.pth
+	$(ACTIVATE) && $(PYTHON) -m src.mlops_fmnist.evaluate --checkpoint $(OUTPUT_DIR)/final_tensor.pt
 
 test:
 	$(ACTIVATE) && pytest -q

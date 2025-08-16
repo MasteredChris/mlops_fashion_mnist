@@ -21,4 +21,4 @@ RUN pip install -e .
 RUN mkdir -p /app/outputs /app/data
 
 # Default: training CPU 3 epoche
-CMD ["python", "-m", "src.mlops_fmnist.train", "--epochs", "3", "--cpu", "--output_dir", "./outputs"]
+CMD ["python", "-m", "src.mlops_fmnist.train", "--epochs", "3", "--output_dir", "./outputs"]
