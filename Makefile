@@ -3,12 +3,12 @@ PYTHON := python
 PACKAGE := mlops-fmnist
 OUTPUT_DIR := outputs
 DATA_DIR := data
+.ONESHELL:
 SHELL := /bin/bash
 
-
-# Ambiente virtuale (default .venv)
 VENV := .venv
-ACTIVATE := source $(VENV)/bin/activate
+ACTIVATE := . $(VENV)/bin/activate
+
 
 # Comandi principali
 .PHONY: help venv install eda train eval test lint build docker-build docker-run clean
@@ -26,9 +26,10 @@ help:
 	@echo "  make docker-build   - build immagine Docker"
 	@echo "  make docker-run     - run training in Docker"
 	@echo "  make clean          - pulizia file temporanei"
-
+	@echo "  Attiva azione venv con: source $(VENV)/bin/activate"
+	@echo "  Disattivazione venv con: deactivate"
 venv:
-	$(PYTHON)3 -m venv $(VENV)
+	$(PYTHON)3 -m venv $(VENV) 
 	@echo "Attiva con: source $(VENV)/bin/activate"
 
 install:
@@ -40,6 +41,7 @@ eda:
 train:
 	$(ACTIVATE) && $(PYTHON) -m src.mlops_fmnist.train --epochs 5 --output_dir $(OUTPUT_DIR)
 	@echo "In outputs/ si genereranno i file final_tensor.pt, metrics.json e train.log"
+	@echo "Attendere qualche minuto"
 eval:
 	$(ACTIVATE) && $(PYTHON) -m src.mlops_fmnist.evaluate --checkpoint $(OUTPUT_DIR)/final_tensor.pt
 
@@ -57,6 +59,8 @@ docker-build:
 
 docker-run:
 	sudo docker run --rm -v $(PWD)/$(OUTPUT_DIR):/app/outputs -v $(PWD)/$(DATA_DIR):/app/data $(PACKAGE)
+	@echo "Attendere qualche minuto"
 
 clean:
 	rm -rf $(VENV) dist build *.egg-info __pycache__ */__pycache__ $(OUTPUT_DIR) $(DATA_DIR) .pytest_cache
+

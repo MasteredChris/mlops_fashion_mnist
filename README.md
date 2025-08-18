@@ -5,7 +5,26 @@ Piccolo progetto AI: CNN per classificare Fashion-MNIST con pipeline MLOps (test
 ## Setup
 
 ```bash
-python -m venv .venv && source .venv/bin/activate  # (Linux/Mac)
-pip install -r requirements.txt
-pip install -e .
+make venv
+source .venv/bin/activate
+make install
+```
+
+## Avviamento e test
+
+```bash
+make eda
+make train
+make eval
+make test
+make lint
+make build
+make docker-build
+make docker-run
+```
+
+## Reset e pulizia
+
+```bash
+make clean
 ```
