@@ -21,6 +21,7 @@ make lint
 make build
 make docker-build
 make docker-run
+make docker-eval
 ```
 
 ## Reset e pulizia

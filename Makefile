@@ -26,14 +26,14 @@ help:
 	@echo "  make docker-build   - build immagine Docker"
 	@echo "  make docker-run     - run training in Docker"
 	@echo "  make clean          - pulizia file temporanei"
-	@echo "  Attiva azione venv con: source $(VENV)/bin/activate"
-	@echo "  Disattivazione venv con: deactivate"
+	@echo "  source $(VENV)/bin/activate	-Attiva azione venv"
+	@echo "  deactivate		-Disattivazione venv"
 venv:
 	$(PYTHON)3 -m venv $(VENV) 
 	@echo "Attiva con: source $(VENV)/bin/activate"
 
 install:
-	$(ACTIVATE) && pip install --upgrade pip && pip install -r requirements.txt && pip install -e . && pip install pytest flake8 build
+	$(ACTIVATE) && pip install --upgrade pip && pip install -r requirements.txt && pip install -e . && pip install pytest flake8 build && pip install scikit-learn
 
 eda:
 	$(ACTIVATE) && $(PYTHON) scripts/eda.py
@@ -60,6 +60,14 @@ docker-build:
 docker-run:
 	sudo docker run --rm -v $(PWD)/$(OUTPUT_DIR):/app/outputs -v $(PWD)/$(DATA_DIR):/app/data $(PACKAGE)
 	@echo "Attendere qualche minuto"
+	
+docker-eval:
+	sudo docker run --rm \
+		-v $(PWD)/$(OUTPUT_DIR):/app/outputs \
+		-v $(PWD)/$(DATA_DIR):/app/data \
+		$(PACKAGE) \
+		python -m src.mlops_fmnist.evaluate --checkpoint ./outputs/final_tensor.pt
+
 
 clean:
 	rm -rf $(VENV) dist build *.egg-info __pycache__ */__pycache__ $(OUTPUT_DIR) $(DATA_DIR) .pytest_cache
