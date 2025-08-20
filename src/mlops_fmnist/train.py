@@ -49,11 +49,11 @@ def evaluate_model(model, device, test_loader, criterion, logger):
 
 
 def main(args):
-    # setup output dir
+    #setup output dir
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    # setup logging
+    #setup logging
     log_path = output_dir / "train.log"
     logging.basicConfig(
         filename=log_path,
@@ -80,12 +80,12 @@ def main(args):
             "val_accuracy": val_acc
         }
 
-    # save final model
+    #save final model
     model_path = output_dir / "final_tensor.pt"
     torch.save(model.state_dict(), model_path)
     logger.info(f"Model saved at {model_path}")
 
-    # save metrics
+    #save metrics
     metrics_path = output_dir / "metrics.json"
     with open(metrics_path, "w") as f:
         json.dump(metrics, f, indent=4)

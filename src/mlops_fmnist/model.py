@@ -15,8 +15,8 @@ class SmallCNN(nn.Module):
         self.fc2 = nn.Linear(128, num_classes)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        x = self.pool(F.relu(self.conv1(x)))  # 1x28x28 -> 32x14x14
-        x = self.pool(F.relu(self.conv2(x)))  # 64x7x7
+        x = self.pool(F.relu(self.conv1(x)))  #1x28x28 -> 32x14x14
+        x = self.pool(F.relu(self.conv2(x)))  #64x7x7
         x = torch.flatten(x, 1)
         x = F.relu(self.fc1(x))
         x = self.dropout(x)

@@ -7,7 +7,7 @@ def get_transforms():
     return transforms.Compose(
         [
             transforms.ToTensor(),
-            transforms.Normalize((0.2860,), (0.3530,)),  # mean/std di Fashion-MNIST
+            transforms.Normalize((0.2860,), (0.3530,)), 
         ]
     )
 

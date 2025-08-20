@@ -33,7 +33,7 @@ venv:
 	@echo "Attiva con: source $(VENV)/bin/activate"
 
 install:
-	$(ACTIVATE) && pip install --upgrade pip && pip install -r requirements.txt && pip install -e . && pip install pytest flake8 build && pip install scikit-learn
+	$(ACTIVATE) && pip install --upgrade pip && pip install -r requirements.txt && pip install -e . && pip install pytest flake8 build
 
 eda:
 	$(ACTIVATE) && $(PYTHON) scripts/eda.py
@@ -60,7 +60,7 @@ docker-build:
 docker-run:
 	sudo docker run --rm -v $(PWD)/$(OUTPUT_DIR):/app/outputs -v $(PWD)/$(DATA_DIR):/app/data $(PACKAGE)
 	@echo "Attendere qualche minuto"
-	
+
 docker-eval:
 	sudo docker run --rm \
 		-v $(PWD)/$(OUTPUT_DIR):/app/outputs \
